@@ -17,7 +17,29 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public BeerDto createBeer(BeerDto beerDto) {
-        return null;
+        return BeerDto.builder().id(UUID.randomUUID())
+                .beerName(beerDto.getBeerName())
+                .beerStyle(beerDto.getBeerStyle())
+                .upc(beerDto.getUpc())
+                .build();
+    }
+
+    @Override
+    public BeerDto updateBeer(UUID beerId, BeerDto beerDto) {
+        return BeerDto.builder().id(beerId)
+                .beerName(beerDto.getBeerName())
+                .beerStyle(beerDto.getBeerStyle())
+                .upc(beerDto.getUpc())
+                .build();
+    }
+
+    @Override
+    public BeerDto deleteBeer(UUID beerId) {
+        return BeerDto.builder().id(beerId)
+                .beerName(null)
+                .beerStyle(null)
+                .upc(null)
+                .build();
     }
 
 

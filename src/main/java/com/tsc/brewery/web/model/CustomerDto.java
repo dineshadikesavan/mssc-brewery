@@ -16,4 +16,6 @@ public class CustomerDto {
     private UUID customerId;
 
     private String customerName;
+
+    private String gender;
 }

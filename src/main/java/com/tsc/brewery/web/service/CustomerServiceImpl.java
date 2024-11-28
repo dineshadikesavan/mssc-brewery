@@ -16,6 +16,26 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public CustomerDto saveNewCustomer(CustomerDto customerDto) {
-        return null;
+        return CustomerDto.builder().customerId(UUID.randomUUID())
+                .customerName(customerDto.getCustomerName())
+                .gender(customerDto.getGender())
+                .build();
+    }
+
+    @Override
+    public CustomerDto updateCustomer(UUID customerId, CustomerDto customerDto) {
+        return CustomerDto.builder()
+                .customerId(customerId)
+                .customerName(customerDto.getCustomerName())
+                .gender(customerDto.getGender())
+                .build();
+    }
+
+    @Override
+    public CustomerDto deleteCustomer(UUID customerId) {
+        return CustomerDto.builder()
+                .customerName(null)
+                .gender(null)
+                .build();
     }
 }
