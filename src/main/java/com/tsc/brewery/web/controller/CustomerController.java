@@ -5,16 +5,20 @@ import com.tsc.brewery.web.service.CustomerService;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Validated
 @RestController
 @RequestMapping("/api/v1/customer")
@@ -33,14 +37,15 @@ public class CustomerController {
 
     @PostMapping("/")
     public ResponseEntity<CustomerDto> createCustomer(@NotNull @Valid @RequestBody CustomerDto customerDto) {
-        CustomerDto savedCustomerDto = this.customerService.saveNewCustomer(customerDto);
+        log.debug("in createCustomer");
+        val savedCustomerDto = this.customerService.saveNewCustomer(customerDto);
         return new ResponseEntity<CustomerDto>(savedCustomerDto, HttpStatus.OK);
     }
 
     @PutMapping("/{customerId}")
     public ResponseEntity<CustomerDto> updateCustomer(@NotNull @PathVariable("customerId") UUID customerId, CustomerDto customerDto) {
-        CustomerDto updatedCustomerDto = this.customerService.updateCustomer(customerId, customerDto);
-        HttpHeaders headers = new HttpHeaders();
+        val updatedCustomerDto = this.customerService.updateCustomer(customerId, customerDto);
+        val headers = new HttpHeaders();
         headers.add("Location", "/api/v1/customer/" + updatedCustomerDto.getCustomerId().toString());
         return new ResponseEntity<CustomerDto>(headers, HttpStatus.OK);
     }
