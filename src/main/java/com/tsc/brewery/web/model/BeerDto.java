@@ -22,9 +22,9 @@ public class BeerDto {
     @Null
     private UUID id;
     private Integer version;
-    private Timestamp createdDate;
+    private OffsetDateTime createdDate;
 
-    private Timestamp lastModifiedDate;
+    private OffsetDateTime lastModifiedDate;
 
     @NotBlank
     private String beerName;
