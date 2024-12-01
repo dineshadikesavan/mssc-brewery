@@ -19,6 +19,7 @@ public class CustomerServiceImpl implements CustomerService{
         return CustomerDto.builder().customerId(UUID.randomUUID())
                 .customerName(customerDto.getCustomerName())
                 .gender(customerDto.getGender())
+                .age(customerDto.getAge())
                 .build();
     }
 
