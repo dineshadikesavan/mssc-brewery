@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class BeerServiceImpl implements BeerService {
-    @Override
+public class BeerServiceImpl implements BeerService  {
     public BeerDto getBeerById(UUID beerId) {
         return BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Heinaken")
@@ -15,8 +14,7 @@ public class BeerServiceImpl implements BeerService {
                 .build();
     }
 
-    @Override
-    public BeerDto createBeer(BeerDto beerDto) {
+   public BeerDto createBeer(BeerDto beerDto) {
         return BeerDto.builder().id(UUID.randomUUID())
                 .beerName(beerDto.getBeerName())
                 .beerStyle(beerDto.getBeerStyle())
@@ -24,7 +22,6 @@ public class BeerServiceImpl implements BeerService {
                 .build();
     }
 
-    @Override
     public BeerDto updateBeer(UUID beerId, BeerDto beerDto) {
         return BeerDto.builder().id(beerId)
                 .beerName(beerDto.getBeerName())
@@ -33,8 +30,7 @@ public class BeerServiceImpl implements BeerService {
                 .build();
     }
 
-    @Override
-    public BeerDto deleteBeer(UUID beerId) {
+   public BeerDto deleteBeer(UUID beerId) {
         return BeerDto.builder().id(beerId)
                 .beerName(null)
                 .beerStyle(null)

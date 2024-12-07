@@ -1,15 +1,18 @@
 package com.tsc.brewery.web.service;
 
 import com.tsc.brewery.web.model.BeerDto;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
 public interface BeerService {
-    public BeerDto getBeerById(UUID beerId);
 
-    public BeerDto createBeer(BeerDto beerDto);
+    BeerDto getBeerById(@NotNull UUID beerId);
 
-    public BeerDto updateBeer(UUID beerId, BeerDto beerDto);
+    BeerDto createBeer(@Valid @NotNull BeerDto beerDto);
 
-    public BeerDto deleteBeer(UUID beerId);
+    BeerDto updateBeer(UUID beerId, @Valid BeerDto beerDto);
+
+    BeerDto deleteBeer(UUID beerId);
 }
