@@ -3,6 +3,7 @@ package com.tsc.brewery.web.model;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +28,7 @@ public class BeerDto {
     private OffsetDateTime lastModifiedDate;
 
     @NotBlank
+    @Size(min = 3, max = 50)
     private String beerName;
 
     @NotBlank
